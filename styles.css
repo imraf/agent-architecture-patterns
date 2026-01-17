@@ -23,6 +23,7 @@
     --code-bg: #1e293b;
     --pre-bg: #0f172a;
     --code-header-bg: #334155;
+    --code-header-text: #f8fafc;
     --code-text: #f8fafc;
     
     --success-color: #059669;
@@ -471,7 +472,7 @@ details.full-code summary {
     background: var(--code-header-bg);
     cursor: pointer;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: var(--code-header-text);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -494,9 +495,9 @@ pre {
 }
 
 .copy-btn {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--code-header-text);
     padding: 6px 16px;
     border-radius: 8px;
     font-size: 0.7rem;
