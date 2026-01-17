@@ -1,8 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
+    /* Dimensions */
     --sidebar-width: 280px;
     
+    /* Light Theme (Default) */
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8fafc;
+    --card-bg: #ffffff;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    --accent-primary: #0284c7;
+    --accent-secondary: #4f46e5;
+    --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+    
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+    
+    --code-bg: #1e293b;
+    --pre-bg: #0f172a;
+    --code-header-bg: #334155;
+    --code-text: #f8fafc;
+    
+    --success-color: #059669;
+    --crewai-color: #ea580c;
+    --sk-color: #2563eb;
+    
+    /* Component Specifics */
+    --h1-gradient: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+    --nav-hover-bg: rgba(0, 0, 0, 0.05);
+    --nav-active-bg: rgba(2, 132, 199, 0.1);
+    --nav-active-border: rgba(2, 132, 199, 0.2);
+    
+    --goal-bg: rgba(2, 132, 199, 0.05);
+    --goal-border: rgba(2, 132, 199, 0.2);
+    --goal-shadow: rgba(2, 132, 199, 0.05);
+    
+    --card-gradient: linear-gradient(160deg, #ffffff 0%, #f1f5f9 100%);
+    --card-shadow-hover: rgba(0,0,0,0.1);
+    
+    --analogy-bg: linear-gradient(90deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+    --analogy-border: rgba(2, 132, 199, 0.2);
+    
+    --tab-hover-bg: rgba(0,0,0,0.05);
+    --tab-active-bg: rgba(2, 132, 199, 0.1);
+    --tab-active-border: rgba(2, 132, 199, 0.2);
+    
+    --framework-btn-bg: #f8fafc;
+    --install-card-bg: #f1f5f9;
+}
+
+[data-theme="dark"] {
     --bg-color: #020617;
     --sidebar-bg: #030712;
     --card-bg: #0f172a;
@@ -19,10 +70,36 @@
     --border-hover: #334155;
     
     --code-bg: #0b1120;
+    --pre-bg: #050811;
+    --code-header-bg: rgba(30, 41, 59, 0.3);
+    --code-text: #f8fafc;
     
     --success-color: #10b981;
     --crewai-color: #fb923c;
     --sk-color: #60a5fa;
+    
+    /* Component Specifics */
+    --h1-gradient: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    --nav-hover-bg: rgba(255, 255, 255, 0.03);
+    --nav-active-bg: rgba(56, 189, 248, 0.08);
+    --nav-active-border: rgba(56, 189, 248, 0.2);
+    
+    --goal-bg: rgba(56, 189, 248, 0.05);
+    --goal-border: rgba(56, 189, 248, 0.1);
+    --goal-shadow: rgba(56, 189, 248, 0.02);
+    
+    --card-gradient: linear-gradient(160deg, #0f172a 0%, #020617 100%);
+    --card-shadow-hover: rgba(0,0,0,0.5);
+    
+    --analogy-bg: linear-gradient(90deg, rgba(56, 189, 248, 0.05) 0%, transparent 100%);
+    --analogy-border: rgba(56, 189, 248, 0.1);
+    
+    --tab-hover-bg: rgba(255,255,255,0.05);
+    --tab-active-bg: rgba(56, 189, 248, 0.1);
+    --tab-active-border: rgba(56, 189, 248, 0.2);
+    
+    --framework-btn-bg: #020617;
+    --install-card-bg: #020617;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,6 +112,7 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* === Sidebar === */
@@ -48,6 +126,7 @@ aside {
     display: flex;
     flex-direction: column;
     z-index: 100;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .brand {
@@ -58,13 +137,32 @@ aside {
     color: var(--text-primary);
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Added for toggle placement */
     gap: 10px;
 }
 
-.brand span {
+.brand-text span {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+    background: var(--nav-hover-bg);
+    color: var(--text-primary);
 }
 
 nav { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
@@ -83,14 +181,14 @@ nav { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.25re
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--nav-hover-bg);
     color: var(--text-primary);
 }
 
 .nav-item.active {
-    background: rgba(56, 189, 248, 0.08);
+    background: var(--nav-active-bg);
     color: var(--accent-primary);
-    box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.2);
+    box-shadow: inset 0 0 0 1px var(--nav-active-border);
 }
 
 /* === Main Layout === */
@@ -120,7 +218,7 @@ h1 {
     margin-bottom: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.05em;
-    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    background: var(--h1-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -129,7 +227,7 @@ h2 {
     font-size: 2rem;
     margin-top: 4rem;
     margin-bottom: 2rem;
-    color: #fff;
+    color: var(--text-primary);
     font-weight: 700;
 }
 
@@ -144,14 +242,14 @@ h2 {
 .example-goal {
     font-size: 1.4rem;
     color: var(--text-primary);
-    background: rgba(56, 189, 248, 0.05);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+    background: var(--goal-bg);
+    border: 1px solid var(--goal-border);
     padding: 1.5rem 2rem;
     border-radius: 16px;
     margin-bottom: 3rem;
     font-weight: 500;
     line-height: 1.4;
-    box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.02);
+    box-shadow: inset 0 0 20px var(--goal-shadow);
 }
 
 .example-goal strong {
@@ -172,7 +270,7 @@ h2 {
 }
 
 .scenario-card {
-    background: linear-gradient(160deg, #0f172a 0%, #020617 100%);
+    background: var(--card-gradient);
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 2rem;
@@ -185,7 +283,7 @@ h2 {
 .scenario-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px -10px var(--card-shadow-hover);
 }
 
 .scenario-card h3 {
@@ -196,8 +294,8 @@ h2 {
 }
 
 .analogy-box {
-    background: linear-gradient(90deg, rgba(56, 189, 248, 0.05) 0%, transparent 100%);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+    background: var(--analogy-bg);
+    border: 1px solid var(--analogy-border);
     border-left: 4px solid var(--accent-primary);
     padding: 2rem;
     margin: 3rem 0;
@@ -240,14 +338,14 @@ h2 {
 }
 
 .example-tab-btn:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+    background: var(--tab-hover-bg);
 }
 
 .example-tab-btn.active {
-    background: rgba(56, 189, 248, 0.1);
+    background: var(--tab-active-bg);
     color: var(--accent-primary);
-    border-color: rgba(56, 189, 248, 0.2);
+    border-color: var(--tab-active-border);
 }
 
 .example-content {
@@ -290,7 +388,7 @@ h2 {
     font-size: 0.9rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    background: #020617;
+    background: var(--framework-btn-bg);
     cursor: pointer;
     font-weight: 700;
     color: var(--text-muted);
@@ -320,11 +418,11 @@ h2 {
 
 .implementation {
     display: none;
-    background: #0f172a;
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 2.5rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px -12px var(--card-shadow-hover);
 }
 
 .implementation.active {
@@ -339,8 +437,8 @@ h2 {
 
 /* === Code & Install === */
 .install-card {
-    background: #020617;
-    border: 1px solid #1e293b;
+    background: var(--install-card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1rem 1.5rem;
     margin-bottom: 2.5rem;
@@ -364,13 +462,13 @@ h2 {
 details.full-code {
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    background: #0b1120;
+    background: var(--code-bg);
     overflow: hidden;
 }
 
 details.full-code summary {
     padding: 1.25rem 1.5rem;
-    background: rgba(30, 41, 59, 0.3);
+    background: var(--code-header-bg);
     cursor: pointer;
     font-weight: 700;
     color: var(--text-secondary);
@@ -385,7 +483,8 @@ details.full-code summary::-webkit-details-marker { display: none; }
 pre {
     margin: 0;
     padding: 2rem;
-    background: #050811 !important;
+    background: var(--pre-bg) !important;
+    color: var(--code-text);
     font-family: 'Menlo', 'Monaco', monospace;
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
@@ -409,7 +508,7 @@ pre {
 
 .copy-btn:hover {
     background: var(--accent-primary);
-    color: #000;
+    color: #fff;
     border-color: var(--accent-primary);
 }
 
@@ -437,7 +536,7 @@ pre {
 .step-content h3 {
     margin-top: 0;
     font-size: 1.1rem;
-    color: #fff;
+    color: var(--text-primary);
 }
 
 /* === Responsive (Mobile) === */
@@ -453,7 +552,7 @@ pre {
         border-right: none; 
         border-bottom: 1px solid var(--border-color); 
         padding: 0 1rem;
-        background: rgba(2, 6, 23, 0.95);
+        background: var(--sidebar-bg); /* Was hardcoded rgba with blur, can just use var or rgba var */
         backdrop-filter: blur(10px);
         overflow-x: auto;
     }
@@ -465,3 +564,7 @@ pre {
     .example-goal { font-size: 1.1rem; padding: 1.25rem; }
     .implementation { padding: 1.5rem; }
 }
+
+/* Theme Icon Toggling */
+[data-theme="dark"] .sun-icon { display: none; }
+[data-theme="dark"] .moon-icon { display: block !important; }

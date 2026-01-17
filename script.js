@@ -180,3 +180,22 @@ function escapeHtml(text) {
 document.addEventListener('DOMContentLoaded', () => {
     showMainTab('intro');
 });
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    
+    if (current === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Initialize theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}

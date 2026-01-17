@@ -1594,7 +1594,7 @@ print(f"\nPlan:\n{result}")`
             <!-- Timeouts -->
             <section class="advanced-section" style="margin-bottom: 6rem;">
                 <h2>⏱️ Timeouts</h2>
-                <p>Long-running agent tasks can hang your application or deplete budgets. Enforcing timeouts ensures your system remains responsive even if a model fails to terminate a response or gets stuck in a loop.</p>
+                <p style="margin-bottom:20px">Long-running agent tasks can hang your application or deplete budgets. Enforcing timeouts ensures your system remains responsive even if a model fails to terminate a response or gets stuck in a loop.</p>
                 
                 <div class="implementation active">
                     <div class="install-card" style="margin-bottom: 1.5rem;">
@@ -1627,7 +1627,7 @@ print(f"\nPlan:\n{result}")`
             <!-- Cancellation -->
             <section class="advanced-section" style="margin-bottom: 6rem;">
                 <h2>🛑 Cancellation</h2>
-                <p>Sometimes you need to stop an agent immediately—perhaps the user canceled their request or a high-priority event interrupted the workflow. Explicit cancellation stops the orchestration logic and stops further message processing.</p>
+                <p style="margin-bottom:20px">Sometimes you need to stop an agent immediately—perhaps the user canceled their request or a high-priority event interrupted the workflow. Explicit cancellation stops the orchestration logic and stops further message processing.</p>
                 
                 <div class="implementation active">
                     <div class="install-card" style="margin-bottom: 1.5rem;">
@@ -1659,7 +1659,7 @@ print(f"\nPlan:\n{result}")`
             <!-- Structured Data -->
             <section class="advanced-section" style="margin-bottom: 6rem;">
                 <h2>🏗️ Structured Data (Typed Outputs)</h2>
-                <p>Relying on raw strings is brittle for enterprise applications. Semantic Kernel allows you to bind Pydantic models to orchestrations, forcing the agents to return strictly validated JSON that maps directly to Python objects.</p>
+                <p style="margin-bottom:20px">Relying on raw strings is brittle for enterprise applications. Semantic Kernel allows you to bind Pydantic models to orchestrations, forcing the agents to return strictly validated JSON that maps directly to Python objects.</p>
                 
                 <div class="implementation active">
                     <div class="install-card" style="margin-bottom: 1.5rem;">
