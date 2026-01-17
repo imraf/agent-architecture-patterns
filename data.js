@@ -1597,10 +1597,6 @@ print(f"\nPlan:\n{result}")`
                 <p style="margin-bottom:20px">Long-running agent tasks can hang your application or deplete budgets. Enforcing timeouts ensures your system remains responsive even if a model fails to terminate a response or gets stuck in a loop.</p>
                 
                 <div class="implementation active">
-                    <div class="install-card" style="margin-bottom: 1.5rem;">
-                        <span class="install-label">Usage Note</span>
-                        <span class="install-cmd">Works with all SK Orchestrations</span>
-                    </div>
                     <details class="full-code" open>
                         <summary>
                             <span>Implementation Example</span>
@@ -1630,10 +1626,6 @@ print(f"\nPlan:\n{result}")`
                 <p style="margin-bottom:20px">Sometimes you need to stop an agent immediately—perhaps the user canceled their request or a high-priority event interrupted the workflow. Explicit cancellation stops the orchestration logic and stops further message processing.</p>
                 
                 <div class="implementation active">
-                    <div class="install-card" style="margin-bottom: 1.5rem;">
-                        <span class="install-label">Resource Management</span>
-                        <span class="install-cmd">Immediate Token Saving</span>
-                    </div>
                     <details class="full-code" open>
                         <summary>
                             <span>Implementation Example</span>
